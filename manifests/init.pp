@@ -6,10 +6,11 @@
 #   include rsyslog
 class rsyslog (
 
-  $rsyslog_service_enable = $rsyslog::params::rsyslog_service_enable,
-  $rsyslog_service_ensure = $rsyslog::params::rsyslog_service_ensure,
+  Boolean $rsyslog_service_enable,
+  Enum['running', 'stopped'] $rsyslog_service_ensure,
+  String[1] $rsyslog_config_rsyslogserver,
 
-) inherits rsyslog::params {
+) {
 
   include rsyslog::install
   include rsyslog::config
