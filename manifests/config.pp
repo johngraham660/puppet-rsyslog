@@ -5,4 +5,15 @@
 # @example
 #   include rsyslog::config
 class rsyslog::config inherits rsyslog {
+
+  file { 'rsyslog.conf':
+    ensure  => file,
+    path    => '/etc/rsyslog.conf',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    content => template('rsyslog/rsyslog.epp'),
+    notify  => Service['rsyslog'],
+    require => Package['rsyslog'],
+  }
 }
