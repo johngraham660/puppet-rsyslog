@@ -5,4 +5,9 @@
 # @example
 #   include rsyslog::service
 class rsyslog::service inherits rsyslog {
+
+  service { 'rsyslog':
+    ensure  => 'running',
+    enabled => true,
+  }
 }
