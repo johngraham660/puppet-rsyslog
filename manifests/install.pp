@@ -5,4 +5,9 @@
 # @example
 #   include rsyslog::install
 class rsyslog::install inherits rsyslog {
+
+  package { 'rsyslog':
+    ensure => 'installed',
+    name   => 'rsyslog',
+  }
 }
